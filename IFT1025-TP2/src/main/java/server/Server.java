@@ -1,17 +1,17 @@
 package server;
 
+// changé les imports en java.io.* pour raccourcir le code
 import javafx.util.Pair;
+import server.models.Course;
 import server.models.RegistrationForm;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
+import server.models.RegistrationForm;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.io.FileWriter;
-// i imported FileWriter in addition to complete my handleRegistration() method
+
+
 public class Server {
 
     public final static String REGISTER_COMMAND = "INSCRIRE";
@@ -93,31 +93,57 @@ public class Server {
      @param arg la session pour laquelle on veut récupérer la liste des cours
      */
     public void handleLoadCourses(String arg) {
-        // TODO: implémenter cette méthode
-    }
-
-    /**
-     Récupérer l'objet 'RegistrationForm' envoyé par le client en utilisant 'objectInputStream', l'enregistrer dans un fichier texte
-     et renvoyer un message de confirmation au client.
-     La méthode gére les exceptions si une erreur se produit lors de la lecture de l'objet, l'écriture dans un fichier ou dans le flux de sortie.
-     */
-    public void handleRegistration() {
         try {
-            RegistrationForm form = (RegistrationForm) objectInputStream.readObject();
 
-            // Open file for appending
-            FileWriter writer = new FileWriter("registrations.txt", true);
+            String session = arg;
+            File coursInfo = new File( "./cours.txt");
+            FileReader fr = new FileReader(coursInfo);
+            // Lire le fichier texte et crÃ©er la liste des cours
+            ArrayList<Course> courses = new ArrayList<>();
+            BufferedReader reader = new BufferedReader(fr));
 
-            // Write registration form to file
-            writer.write(form.toString() + "\n");
-            writer.close();
+            String s;
+            while ((s = reader.readLine()) != null) {
+                String[] parts = s.split("\t");
 
-            // Send success message to client and manages and shows exceptions in case of errors
-            objectOutputStream.writeObject("Inscription réussie");
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+                String courseSession = parts[2];
+                if (courseSession.equals(session)) {
+                    Course coursOffert = new Course(parts[0], parts[1]);
+                    courses.add(coursOffert);
+                }
+                // Fermer le fichier texte
+                reader.close();
+
+
+                // Envoyer la liste des cours au client
+                objectOutputStream.writeObject(courses);
+                objectOutputStream.flush();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         }
+
+        /**
+         Récupérer l'objet 'RegistrationForm' envoyé par le client en utilisant 'objectInputStream', l'enregistrer dans un fichier texte
+         et renvoyer un message de confirmation au client.
+         La méthode gére les exceptions si une erreur se produit lors de la lecture de l'objet, l'écriture dans un fichier ou dans le flux de sortie.
+         */
+        public void handleRegistration() {
+            try {
+                RegistrationForm form = (RegistrationForm) objectInputStream.readObject();
+
+                // Ouvrir le fichier pour ajouter
+                FileWriter writer = new FileWriter("registrations.txt", true);
+
+                // Écrire le formulaire d'inscription dans le fichier
+                writer.write(form.toString() + "\n");
+                writer.close();
+
+                // Envoyer un message de réussite au client et gérer et afficher les exceptions en cas d'errerurs.
+                objectOutputStream.writeObject("Inscription réussie");
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
-
-}
-

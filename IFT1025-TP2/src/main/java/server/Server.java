@@ -1,17 +1,17 @@
 package server;
 
+// changed the imports to java.io.* so the code would be shorter
 import javafx.util.Pair;
+import server.models.Course;
 import server.models.RegistrationForm;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
+import server.models.RegistrationForm;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.io.FileWriter;
-// i imported FileWriter in addition to complete my handleRegistration() method
+
+
 public class Server {
 
     public final static String REGISTER_COMMAND = "INSCRIRE";
@@ -93,7 +93,34 @@ public class Server {
      @param arg la session pour laquelle on veut récupérer la liste des cours
      */
     public void handleLoadCourses(String arg) {
-        // TODO: implémenter cette méthode
+        try {
+
+            String session = arg;
+            File coursInfo = new File( "./cours.txt");
+            FileReader fr = new FileReader(coursInfo);
+            // Lire le fichier texte et crÃ©er la liste des cours
+            ArrayList<Course> courses = new ArrayList<>();
+            BufferedReader reader = new BufferedReader(fr));
+
+            String s;
+            while ((s = reader.readLine()) != null) {
+                String[] parts = s.split("\t");
+
+                String courseSession = parts[2];
+                if (courseSession.equals(session)) {
+                    Course coursOffert = new Course(parts[0], parts[1]);
+                    courses.add(coursOffert);
+                }
+                // Fermer le fichier texte
+                reader.close();
+
+
+                // Envoyer la liste des cours au client
+                objectOutputStream.writeObject(courses);
+                objectOutputStream.flush();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
     }
 
     /**

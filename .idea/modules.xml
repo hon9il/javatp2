@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
+=======
       <module fileurl="file://$PROJECT_DIR$/IFT1025-TP2/Server.iml" filepath="$PROJECT_DIR$/IFT1025-TP2/Server.iml" />
+>>>>>>> origin/main
       <module fileurl="file://$PROJECT_DIR$/.idea/javatp2.iml" filepath="$PROJECT_DIR$/.idea/javatp2.iml" />
     </modules>
   </component>

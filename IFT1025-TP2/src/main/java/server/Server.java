@@ -1,18 +1,17 @@
 package server;
 
+// changed the imports to java.io.* so the code would be shorter
 import javafx.util.Pair;
 import server.models.Course;
 import server.models.RegistrationForm;
-
 import java.io.*;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import server.models.RegistrationForm;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-// changed the imports to java.io.* so the code would be shorter
+
 public class Server {
 
     public final static String REGISTER_COMMAND = "INSCRIRE";

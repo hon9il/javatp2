@@ -86,21 +86,22 @@ public class Server {
     }
 
     /**
-     Lire un fichier texte contenant des informations sur les cours et les transofmer en liste d'objets 'Course'.
-     La méthode filtre les cours par la session spécifiée en argument.
-     Ensuite, elle renvoie la liste des cours pour une session au client en utilisant l'objet 'objectOutputStream'.
-     La méthode gère les exceptions si une erreur se produit lors de la lecture du fichier ou de l'écriture de l'objet dans le flux.
-     @param arg la session pour laquelle on veut récupérer la liste des cours
+     * Lire un fichier texte contenant des informations sur les cours et les transofmer en liste d'objets 'Course'.
+     * La méthode filtre les cours par la session spécifiée en argument.
+     * Ensuite, elle renvoie la liste des cours pour une session au client en utilisant l'objet 'objectOutputStream'.
+     * La méthode gère les exceptions si une erreur se produit lors de la lecture du fichier ou de l'écriture de l'objet dans le flux.
+     *
+     * @param arg la session pour laquelle on veut récupérer la liste des cours
      */
     public void handleLoadCourses(String arg) {
         try {
 
             String session = arg;
-            File coursInfo = new File( "./cours.txt");
+            File coursInfo = new File("./cours.txt");
             FileReader fr = new FileReader(coursInfo);
             // Lire le fichier texte et crÃ©er la liste des cours
             ArrayList<Course> courses = new ArrayList<>();
-            BufferedReader reader = new BufferedReader(fr));
+            BufferedReader reader = new BufferedReader(fr);
 
             String s;
             while ((s = reader.readLine()) != null) {
@@ -118,33 +119,37 @@ public class Server {
                 // Envoyer la liste des cours au client
                 objectOutputStream.writeObject(courses);
                 objectOutputStream.flush();
-            } catch (IOException e){
+            } catch(IOException e){
                 e.printStackTrace();
             }
-    }
-
-    /**
-     Récupérer l'objet 'RegistrationForm' envoyé par le client en utilisant 'objectInputStream', l'enregistrer dans un fichier texte
-     et renvoyer un message de confirmation au client.
-     La méthode gére les exceptions si une erreur se produit lors de la lecture de l'objet, l'écriture dans un fichier ou dans le flux de sortie.
-     */
-    public void handleRegistration() {
-        try {
-            RegistrationForm form = (RegistrationForm) objectInputStream.readObject();
-
-            // Open file for appending
-            FileWriter writer = new FileWriter("registrations.txt", true);
-
-            // Write registration form to file
-            writer.write(form.toString() + "\n");
-            writer.close();
-
-            // Send success message to client and manages and shows exceptions in case of errors
-            objectOutputStream.writeObject("Inscription réussie");
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+
+        /**
+         Récupérer l'objet 'RegistrationForm' envoyé par le client en utilisant 'objectInputStream', l'enregistrer dans un fichier texte
+         et renvoyer un message de confirmation au client.
+         La méthode gére les exceptions si une erreur se produit lors de la lecture de l'objet, l'écriture dans un fichier ou dans le flux de sortie.
+         */
+        public void handleRegistration () {
+            try {
+                RegistrationForm form = (RegistrationForm) objectInputStream.readObject();
+
+                // Open file for appending
+                FileWriter writer = new FileWriter("registrations.txt", true);
+
+                // Write registration form to file
+                writer.write(form.toString() + "\n");
+                writer.close();
+
+                // Send success message to client and manages and shows exceptions in case of errors
+                objectOutputStream.writeObject("Inscription réussie");
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
-
 }
-

@@ -5,7 +5,6 @@ import javafx.util.Pair;
 import server.models.Course;
 import server.models.RegistrationForm;
 import java.io.*;
-import server.models.RegistrationForm;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -92,8 +91,9 @@ public class Server {
      * La méthode gère les exceptions si une erreur se produit lors de la lecture du fichier ou de l'écriture de l'objet dans le flux.
      *
      * @param arg la session pour laquelle on veut récupérer la liste des cours
+     * @return
      */
-    public void handleLoadCourses(String arg) {
+    public static Object handleLoadCourses(String arg) {
         try {
 
             String session = arg;
@@ -119,8 +119,6 @@ public class Server {
                 // Envoyer la liste des cours au client
                 objectOutputStream.writeObject(courses);
                 objectOutputStream.flush();
-            } catch(IOException e){
-                e.printStackTrace();
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -133,7 +131,7 @@ public class Server {
          et renvoyer un message de confirmation au client.
          La méthode gére les exceptions si une erreur se produit lors de la lecture de l'objet, l'écriture dans un fichier ou dans le flux de sortie.
          */
-        public void handleRegistration () {
+        public void handleRegistration() {
             try {
                 RegistrationForm form = (RegistrationForm) objectInputStream.readObject();
 

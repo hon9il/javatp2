@@ -32,9 +32,21 @@ public class Client {
             System.out.println("3. Ete");
 
             int session = scanner.nextInt();
+            String sessionChoisie = "";
+
+            if(session == 1){
+                sessionChoisie = "Automne";
+            }
+            if(session == 2){
+                sessionChoisie = "Hiver";
+            }
+            if(session == 3){
+                sessionChoisie = "Ete";
+            }
+
 
             // Envoyer la commande handleLoadCourses au serveur avec le semestre demandé
-            objectOutputStream.writeObject(Server.handleLoadCourses(session) + " " + session);
+            objectOutputStream.writeObject(Server.handleLoadCourses(sessionChoisie));
             objectOutputStream.flush();
 
             // Lire la liste de cours renvoyée par le serveur
@@ -84,7 +96,7 @@ public class Client {
         String courseTitle = scanner.nextLine();
 
         // Créer des objets Course et RegistrationForm avec les informations saisies
-        Course course = new Course(courseCode, courseTitle);
+            Course course = new Course(courseCode, courseTitle);
         RegistrationForm form = new RegistrationForm(prenom, nom, email, matricule, course);
 
         // Envoyer la commande et le formulaire d'inscription au serveur

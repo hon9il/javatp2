@@ -53,7 +53,7 @@ public class Client {
             ArrayList<Course> courses = (ArrayList<Course>) objectInputStream.readObject();
 
             // Afficher la liste de cours
-            System.out.println("Les cours offerts pendant la session d' " + session + "sont:");
+            System.out.println("Les cours offerts pendant la session d' " + sessionChoisie + "sont:");
             for (Course course : courses) {
                 System.out.println(course.getCode() + " - " + course.getName());
             }
@@ -63,13 +63,13 @@ public class Client {
             System.out.println("1. Consulter les cours offerts pour une autre session");
             System.out.println("2. Inscription à un cours");
 
-            String choix = scanner.nextLine();
-            if (choix.equals("1")) {
+            int choix = scanner.nextInt();
+            if (choix == 1) {
                 showAvailableCourses();
-
-            } else if (choix.equals("2")) {
-                registerStudentToCourse();
             }
+            if (choix == 2) {
+                registerStudentToCourse();
+            };
 
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -96,7 +96,7 @@ public class Client {
         String courseTitle = scanner.nextLine();
 
         // Créer des objets Course et RegistrationForm avec les informations saisies
-            Course course = new Course(courseCode, courseTitle);
+            Course course = new Course(courseCode, courseTitle,"");
         RegistrationForm form = new RegistrationForm(prenom, nom, email, matricule, course);
 
         // Envoyer la commande et le formulaire d'inscription au serveur

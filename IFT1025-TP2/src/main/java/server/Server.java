@@ -17,8 +17,8 @@ public class Server {
     public final static String LOAD_COMMAND = "CHARGER";
     private final ServerSocket server;
     private Socket client;
-    private ObjectInputStream objectInputStream;
-    private ObjectOutputStream objectOutputStream;
+    private static ObjectInputStream objectInputStream;
+    private static ObjectOutputStream objectOutputStream;
     private final ArrayList<EventHandler> handlers;
 
     public Server(int port) throws IOException {
@@ -84,6 +84,9 @@ public class Server {
         }
     }
 
+
+
+
     /**
      * Lire un fichier texte contenant des informations sur les cours et les transofmer en liste d'objets 'Course'.
      * La méthode filtre les cours par la session spécifiée en argument.
@@ -109,7 +112,7 @@ public class Server {
 
                 String courseSession = parts[2];
                 if (courseSession.equals(session)) {
-                    Course coursOffert = new Course(parts[0], parts[1]);
+                    Course coursOffert = new Course(parts[0], parts[1], "");
                     courses.add(coursOffert);
                 }
                 // Fermer le fichier texte
@@ -125,13 +128,15 @@ public class Server {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        return null;
+    }
 
         /**
          Récupérer l'objet 'RegistrationForm' envoyé par le client en utilisant 'objectInputStream', l'enregistrer dans un fichier texte
          et renvoyer un message de confirmation au client.
          La méthode gére les exceptions si une erreur se produit lors de la lecture de l'objet, l'écriture dans un fichier ou dans le flux de sortie.
          */
-        public void handleRegistration() {
+        private void handleRegistration() {
             try {
                 RegistrationForm form = (RegistrationForm) objectInputStream.readObject();
 
@@ -149,5 +154,5 @@ public class Server {
             }
         }
 
-    }
+
 }

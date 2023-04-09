@@ -32,44 +32,44 @@ public class Client {
             System.out.println("2. Hiver");
             System.out.println("3. Ete");
 
-            String session = scanner.nextLine();
+            int session = scanner.nextInt();
             String sessionChoisie = "";
 
-            if(session == "1"){
+            if(session == 1){
                 sessionChoisie = "Automne";
             }
-            if(session == "2"){
+            if(session == 2){
                 sessionChoisie = "Hiver";
             }
-            if(session == "3"){
+            if(session == 3){
                 sessionChoisie = "Ete";
             }
 
             // Envoyer la commande handleLoadCourses au serveur avec le semestre demandé
-
-
-            objectOutputStream.writeObject(Server.LOAD_COMMAND + " " + session);
+            objectOutputStream.writeObject(Server.LOAD_COMMAND + " " + sessionChoisie);
             objectOutputStream.flush();
+
+            // Afficher la liste de cours
+            System.out.println("Les cours offerts pendant la session d' " + sessionChoisie + " sont:");
 
             // Lire la liste de cours renvoyée par le serveur
             ArrayList<Course> courses = (ArrayList<Course>) objectInputStream.readObject();
-
-            // Afficher la liste de cours
-            System.out.println("Les cours offerts pendant la session d' " + sessionChoisie + "sont:");
             for (Course course : courses) {
-                System.out.println(course.getCode() + " - " + course.getName());
+                System.out.println(courses);
             }
+
+
             // Demander à l'utilisateur s'il souhaite s'inscrire à un cours ou charger des cours pour un autre semestre
 
-            System.out.println("Pour continuer:");
-            System.out.println("1. Consulter les cours offerts pour une autre session");
-            System.out.println("2. Inscription à un cours");
+            System.out.print("Pour continuer:");
+            System.out.print("1. Consulter les cours offerts pour une autre session");
+            System.out.print("2. Inscription à un cours");
 
-            int choix = scanner.nextInt();
-            if (choix == 1) {
+            String choix = scanner.next();
+            if (choix == "1") {
                 showAvailableCourses();
             }
-            if (choix == 2) {
+            if (choix == "2") {
                 registerStudentToCourse();
             };
 
@@ -118,7 +118,7 @@ public class Client {
     public static void main(String[] args) {
 
         try {
-            Client client = new Client("localhost", 9090);
+            Client client = new Client("localhost", 1337);
 
             // Appeler la méthode d'inscription
             client.showAvailableCourses();

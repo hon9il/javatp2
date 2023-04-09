@@ -2,7 +2,6 @@ package server;
 
 // changed the imports to java.io.* so the code would be shorter
 import javafx.util.Pair;
-import server.models.Course;
 import server.models.RegistrationForm;
 import java.io.*;
 import java.net.ServerSocket;
@@ -101,29 +100,29 @@ public class Server {
             String session = arg;
             File coursInfo = new File("IFT1025-TP2/src/main/java/server/data/cours.txt");
             FileReader fr = new FileReader(coursInfo);
+
             // Lire le fichier texte et creer la liste des cours
-            ArrayList<Course> courses = new ArrayList<>();
+            ArrayList<String> courses = new ArrayList<>();
             BufferedReader reader = new BufferedReader(fr);
 
-            String s;
-            while ((s = reader.readLine()) != null) {
-
-                String[] parts = s.split("\t");
-
+            String line;
+            line = reader.readLine();
+            while (line != null) {
+                String[] parts = line.split("\t");
+                String courseCode = parts[0];
+                String courseName = parts[1];
                 String courseSession = parts[2];
                 if (courseSession.equals(session)) {
-                    Course coursOffert = new Course(parts[0], parts[1], "");
-                    courses.add(coursOffert);
+                    courses.add(courseCode + "  " + courseName);
                 }
-                // Fermer le fichier texte
-                reader.close();
-
             }
+            // Fermer le fichier texte
+            reader.close();
             // Envoyer la liste des cours au client
 
             objectOutputStream.writeObject(courses);
-
             objectOutputStream.flush();
+
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

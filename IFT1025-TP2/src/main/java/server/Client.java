@@ -24,6 +24,7 @@ public class Client {
     // Méthode pour récupérer la liste des cours disponibles pour une session donnée
     public void showAvailableCourses(){
         try{
+
             Scanner scanner = new Scanner(System.in);
 
             System.out.println("Veuillez choisir la session pour laquelle vous voulez consulter la liste des cours");
@@ -31,22 +32,23 @@ public class Client {
             System.out.println("2. Hiver");
             System.out.println("3. Ete");
 
-            int session = scanner.nextInt();
+            String session = scanner.nextLine();
             String sessionChoisie = "";
 
-            if(session == 1){
+            if(session == "1"){
                 sessionChoisie = "Automne";
             }
-            if(session == 2){
+            if(session == "2"){
                 sessionChoisie = "Hiver";
             }
-            if(session == 3){
+            if(session == "3"){
                 sessionChoisie = "Ete";
             }
 
-
             // Envoyer la commande handleLoadCourses au serveur avec le semestre demandé
-            objectOutputStream.writeObject(Server.handleLoadCourses(sessionChoisie));
+
+
+            objectOutputStream.writeObject(Server.LOAD_COMMAND + " " + session);
             objectOutputStream.flush();
 
             // Lire la liste de cours renvoyée par le serveur

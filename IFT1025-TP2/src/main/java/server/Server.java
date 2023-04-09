@@ -16,7 +16,7 @@ public class Server {
     public final static String REGISTER_COMMAND = "INSCRIRE";
     public final static String LOAD_COMMAND = "CHARGER";
     private final ServerSocket server;
-    private Socket client;
+    private static Socket client;
     private static ObjectInputStream objectInputStream;
     private static ObjectOutputStream objectOutputStream;
     private final ArrayList<EventHandler> handlers;
@@ -50,8 +50,9 @@ public class Server {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            }
         }
-    }
+
 
     public void listen() throws IOException, ClassNotFoundException {
         String line;
@@ -84,11 +85,8 @@ public class Server {
         }
     }
 
-
-
-
     /**
-     * Lire un fichier texte contenant des informations sur les cours et les transofmer en liste d'objets 'Course'.
+     * Lire un fichier texte contenant des informations sur les cours et les transfomer en liste d'objets 'Course'.
      * La méthode filtre les cours par la session spécifiée en argument.
      * Ensuite, elle renvoie la liste des cours pour une session au client en utilisant l'objet 'objectOutputStream'.
      * La méthode gère les exceptions si une erreur se produit lors de la lecture du fichier ou de l'écriture de l'objet dans le flux.
@@ -96,18 +94,20 @@ public class Server {
      * @param arg la session pour laquelle on veut récupérer la liste des cours
      * @return
      */
-    public static Object handleLoadCourses(String arg) {
+    public static Object handleLoadCourses(String arg){
+
         try {
 
             String session = arg;
-            File coursInfo = new File("./cours.txt");
+            File coursInfo = new File("IFT1025-TP2/src/main/java/server/data/cours.txt");
             FileReader fr = new FileReader(coursInfo);
-            // Lire le fichier texte et crÃ©er la liste des cours
+            // Lire le fichier texte et creer la liste des cours
             ArrayList<Course> courses = new ArrayList<>();
             BufferedReader reader = new BufferedReader(fr);
 
             String s;
             while ((s = reader.readLine()) != null) {
+
                 String[] parts = s.split("\t");
 
                 String courseSession = parts[2];
@@ -118,11 +118,13 @@ public class Server {
                 // Fermer le fichier texte
                 reader.close();
 
-
-                // Envoyer la liste des cours au client
-                objectOutputStream.writeObject(courses);
-                objectOutputStream.flush();
             }
+            // Envoyer la liste des cours au client
+
+            objectOutputStream.writeObject(courses);
+
+            objectOutputStream.flush();
+
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {

@@ -2,6 +2,7 @@ package server;
 
 // changed the imports to java.io.* so the code would be shorter
 import javafx.util.Pair;
+import server.models.Course;
 import server.models.RegistrationForm;
 import java.io.*;
 import java.net.ServerSocket;
@@ -93,43 +94,43 @@ public class Server {
      * @param arg la session pour laquelle on veut récupérer la liste des cours
      * @return
      */
-    public static Object handleLoadCourses(String arg){
-
+    public static Object handleLoadCourses(String arg) {
+        ArrayList<Course> courses;
         try {
 
             String session = arg;
             File coursInfo = new File("IFT1025-TP2/src/main/java/server/data/cours.txt");
             FileReader fr = new FileReader(coursInfo);
-
-            // Lire le fichier texte et creer la liste des cours
-            ArrayList<String> courses = new ArrayList<>();
             BufferedReader reader = new BufferedReader(fr);
 
+            // Lire le fichier texte et creer la liste des cours
+            courses = new ArrayList<Course>();
+
             String line;
-            line = reader.readLine();
-            while (line != null) {
+
+            while ((line = reader.readLine()) != null) {
                 String[] parts = line.split("\t");
                 String courseCode = parts[0];
                 String courseName = parts[1];
                 String courseSession = parts[2];
                 if (courseSession.equals(session)) {
-                    courses.add(courseCode + "  " + courseName);
+                    Course courseDisponible = new Course(courseName, courseCode, courseSession);
+                    courses.add(courseDisponible);
                 }
             }
             // Fermer le fichier texte
             reader.close();
             // Envoyer la liste des cours au client
-
             objectOutputStream.writeObject(courses);
             objectOutputStream.flush();
-
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return courses;
+
     }
 
         /**

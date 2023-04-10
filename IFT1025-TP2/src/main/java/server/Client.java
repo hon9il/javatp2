@@ -26,7 +26,6 @@ public class Client {
         try{
 
             Scanner scanner = new Scanner(System.in);
-
             System.out.println("Veuillez choisir la session pour laquelle vous voulez consulter la liste des cours");
             System.out.println("1. Automne");
             System.out.println("2. Hiver");
@@ -53,25 +52,29 @@ public class Client {
             System.out.println("Les cours offerts pendant la session d' " + sessionChoisie + " sont:");
 
             // Lire la liste de cours renvoyée par le serveur
-            ArrayList<Course> courses = (ArrayList<Course>) objectInputStream.readObject();
-            for (Course course : courses) {
-                System.out.println(courses);
+            ArrayList<Course> courses;
+            courses = (ArrayList<Course>) objectInputStream.readObject();
+            if (courses.isEmpty()) {
+                System.out.println("Aucun cours disponible pour la session sélectionnée.");
+            } else {
+                for (Course courseDisponible : courses) {
+                    System.out.println(courseDisponible);
+                }
             }
-
+            String choix = scanner.nextLine();
 
             // Demander à l'utilisateur s'il souhaite s'inscrire à un cours ou charger des cours pour un autre semestre
 
-            System.out.print("Pour continuer:");
-            System.out.print("1. Consulter les cours offerts pour une autre session");
-            System.out.print("2. Inscription à un cours");
-
-            String choix = scanner.next();
-            if (choix == "1") {
-                showAvailableCourses();
+            System.out.println("Pour continuer:");
+            System.out.println("1. Consulter les cours offerts pour une autre session");
+            System.out.println("2. Inscription à un cours");
+            
+            if (choix.equals("1")) {
+                System.out.println("aca te muestro");;
             }
-            if (choix == "2") {
+            if (choix.equals("2")) {
                 registerStudentToCourse();
-            };
+            }
 
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();

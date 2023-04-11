@@ -79,10 +79,12 @@ public class Server {
         }
 
     /**
-     * Méthode principale qui écoute les connexions entrantes et traite les commandes reçues.
-     * La méthode reste en boucle infinie et s'exécute jusqu'à ce que le programme soit arrêté.
-     * @throws IOException
-     * @throws ClassNotFoundException
+     * Méthode qui attend les commandes entrantes du client, les traite et les renvoie en conséquence.
+     * La méthode attend une ligne de texte à partir du flux d'entrée de l'objet client,
+     * la divise en deux parties (la commande et les arguments) et les envoie aux gestionnaires d'événements enregistrés.
+     *
+     * @throws IOException si une erreur se produit lors de la lecture du flux d'entrée ou de la communication avec le client
+     * @throws ClassNotFoundException si la classe de l'objet lu depuis le flux d'entrée n'est pas trouvée
      */
     public void listen() throws IOException, ClassNotFoundException {
         String line;

@@ -59,6 +59,7 @@ public class Client {
                     System.out.println("Aucun cours disponible pour la session sélectionnée.");
                 } else {
                     for (Course courseDisponible : courses) {
+
                         System.out.println(courseDisponible);
                     }
                 }

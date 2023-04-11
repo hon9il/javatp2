@@ -10,7 +10,10 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
+/**
+ * Cette classe représente un serveur qui écoute sur un port spécifique et attend les connexions des clients.
+ * Le serveur reçoit des commandes à partir des clients, les traite et répond en conséquence.
+ */
 public class Server {
 
     public final static String REGISTER_COMMAND = "INSCRIRE";
@@ -21,21 +24,43 @@ public class Server {
     private static ObjectOutputStream objectOutputStream;
     private final ArrayList<EventHandler> handlers;
 
+    /**
+     * Constructeur de la classe Server.
+     *
+     * @param port le numéro de port sur lequel le serveur doit écouter les connexions entrantes
+     * @throws IOException si une erreur se produit lors de la création du serveur socket
+     */
     public Server(int port) throws IOException {
         this.server = new ServerSocket(port, 1);
         this.handlers = new ArrayList<EventHandler>();
         this.addEventHandler(this::handleEvents);
     }
 
+    /**
+     * Ajoute un objet EventHandler à la liste des gestionnaires d'événements.
+     *
+     * @param h l'objet EventHandler à ajouter à la liste des gestionnaires d'événements
+     */
     public void addEventHandler(EventHandler h) {
         this.handlers.add(h);
     }
 
+    /**
+     * Avertissement des gestionnaires d'événements enregistrés.
+     *
+     * @param cmd la commande qui a été traitée
+     * @param arg les arguments de la commande qui a été traitée
+     */
     private void alertHandlers(String cmd, String arg) {
         for (EventHandler h : this.handlers) {
             h.handle(cmd, arg);
         }
     }
+
+    /**
+     * Méthode principale qui écoute les connexions entrantes et traite les commandes reçues.
+     * La méthode reste en boucle infinie et s'exécute jusqu'à ce que le programme soit arrêté.
+     */
 
     public void run() {
         while (true) {
@@ -53,7 +78,10 @@ public class Server {
             }
         }
 
-
+    /**
+     * Méthode principale qui écoute les connexions entrantes et traite les commandes reçues.
+     * La méthode reste en boucle infinie et s'exécute jusqu'à ce que le programme soit arrêté.
+     */
     public void listen() throws IOException, ClassNotFoundException {
         String line;
         if ((line = this.objectInputStream.readObject().toString()) != null) {
@@ -64,6 +92,14 @@ public class Server {
         }
     }
 
+    /**
+     * Lit une commande envoyée par le client sous forme de chaîne de caractères et la sépare en deux parties : la commande et les arguments.
+     * Renvoie ces deux parties sous forme de paire de chaînes de caractères.
+     *
+     * @param line la commande envoyée par le client
+     * @return une paire de chaînes de caractères contenant la commande et les arguments
+     */
+
     public Pair<String, String> processCommandLine(String line) {
         String[] parts = line.split(" ");
         String cmd = parts[0];
@@ -71,12 +107,25 @@ public class Server {
         return new Pair<>(cmd, args);
     }
 
+    /**
+     * Ferme les flux d'entrée/sortie et la connexion client.
+     * Gère les exceptions en cas d'erreur lors de la fermeture.
+     *
+     * @throws IOException si une erreur se produit lors de la fermeture des flux ou de la connexion
+     */
     public void disconnect() throws IOException {
         objectOutputStream.close();
         objectInputStream.close();
         client.close();
     }
 
+    /**
+     * Traite la commande et les arguments envoyés par le client.
+     * Appelle la méthode correspondante en fonction de la commande.
+     *
+     * @param cmd la commande envoyée par le client
+     * @param arg les arguments associés à la commande
+     */
     public void handleEvents(String cmd, String arg) {
         if (cmd.equals(REGISTER_COMMAND)) {
             handleRegistration();
@@ -86,13 +135,13 @@ public class Server {
     }
 
     /**
-     * Lire un fichier texte contenant des informations sur les cours et les transfomer en liste d'objets 'Course'.
+     * Lit un fichier texte contenant des informations sur les cours et les transfome en liste d'objets 'Course'.
      * La méthode filtre les cours par la session spécifiée en argument.
      * Ensuite, elle renvoie la liste des cours pour une session au client en utilisant l'objet 'objectOutputStream'.
      * La méthode gère les exceptions si une erreur se produit lors de la lecture du fichier ou de l'écriture de l'objet dans le flux.
      *
      * @param arg la session pour laquelle on veut récupérer la liste des cours
-     * @return
+     * @return  une liste d'objets 'Course' correspondant aux cours de la session spécifiée en argument
      */
     public static Object handleLoadCourses(String arg) {
         ArrayList<Course> courses;
@@ -116,6 +165,7 @@ public class Server {
                 if (courseSession.equals(session)) {
                     Course courseDisponible = new Course(courseName, courseCode, courseSession);
                     courses.add(courseDisponible);
+
                 }
             }
             // Fermer le fichier texte
@@ -134,9 +184,9 @@ public class Server {
     }
 
         /**
-         Récupérer l'objet 'RegistrationForm' envoyé par le client en utilisant 'objectInputStream', l'enregistrer dans un fichier texte
-         et renvoyer un message de confirmation au client.
-         La méthode gére les exceptions si une erreur se produit lors de la lecture de l'objet, l'écriture dans un fichier ou dans le flux de sortie.
+         * Récupère l'objet 'RegistrationForm' envoyé par le client en utilisant 'objectInputStream', l'enregistre dans un fichier texte
+         * et renvoie un message de confirmation au client.
+         * La méthode gére les exceptions si une erreur se produit lors de la lecture de l'objet, l'écriture dans un fichier ou dans le flux de sortie.
          */
         private void handleRegistration() {
             try {

@@ -1,6 +1,6 @@
 package server;
 
-// changed the imports to java.io.* so the code would be shorter
+// J'ai modifié les importations en java.io.* pour que le code soit plus court.
 import javafx.util.Pair;
 import server.models.Course;
 import server.models.RegistrationForm;
@@ -81,6 +81,8 @@ public class Server {
     /**
      * Méthode principale qui écoute les connexions entrantes et traite les commandes reçues.
      * La méthode reste en boucle infinie et s'exécute jusqu'à ce que le programme soit arrêté.
+     * @throws IOException
+     * @throws ClassNotFoundException
      */
     public void listen() throws IOException, ClassNotFoundException {
         String line;
@@ -192,14 +194,14 @@ public class Server {
             try {
                 RegistrationForm form = (RegistrationForm) objectInputStream.readObject();
 
-                // Open file for appending
+                // Ouvrir le fichier pour ajouter des données.
                 FileWriter writer = new FileWriter("registrations.txt", true);
 
-                // Write registration form to file
+                // Écrire le formulaire d'inscription dans un fichier.
                 writer.write(form.toString() + "\n");
                 writer.close();
 
-                // Send success message to client and manages and shows exceptions in case of errors
+                // Envoyer un message de réussite au client et gérer et afficher les exceptions en cas d'erreurs.
                 objectOutputStream.writeObject("Inscription réussie");
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();

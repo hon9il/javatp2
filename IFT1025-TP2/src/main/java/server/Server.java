@@ -156,7 +156,10 @@ public class Server {
             FileReader fr = new FileReader(coursInfo);
             BufferedReader reader = new BufferedReader(fr);
 
-            // Lire le fichier texte et creer la liste des cours
+            /**
+             * Lire le fichier texte et creer la liste des cours
+              */
+
             courses = new ArrayList<Course>();
 
             String line;
@@ -172,9 +175,13 @@ public class Server {
 
                 }
             }
-            // Fermer le fichier texte
+            /**
+             *  Fermer le fichier texte
+             */
             reader.close();
-            // Envoyer la liste des cours au client
+            /**
+             * Envoyer la liste des cours au client
+             */
             objectOutputStream.writeObject(courses);
             objectOutputStream.flush();
 
@@ -196,14 +203,20 @@ public class Server {
             try {
                 RegistrationForm form = (RegistrationForm) objectInputStream.readObject();
 
-                // Ouvrir le fichier pour ajouter des données.
+                /**
+                 * Ouvrir le fichier pour ajouter des données.
+                 */
                 FileWriter writer = new FileWriter("registrations.txt", true);
 
-                // Écrire le formulaire d'inscription dans un fichier.
+                /**
+                 * Écrire le formulaire d'inscription dans un fichier.
+                 */
                 writer.write(form.toString() + "\n");
                 writer.close();
 
-                // Envoyer un message de réussite au client et gérer et afficher les exceptions en cas d'erreurs.
+                /**
+                 * Envoyer un message de réussite au client et gérer et afficher les exceptions en cas d'erreurs.
+                 */
                 objectOutputStream.writeObject("Inscription réussie");
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();

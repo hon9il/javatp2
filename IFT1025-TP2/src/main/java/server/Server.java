@@ -208,7 +208,7 @@ public class Server {
                  */
                 FileWriter writer = new FileWriter("registrations.txt", true);
 
-                /**
+                 /**
                  * Écrire le formulaire d'inscription dans un fichier.
                  */
                 writer.write(form.toString() + "\n");

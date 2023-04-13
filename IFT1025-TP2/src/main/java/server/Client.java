@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Client {
-    // Les trois objets sont private pcq'ils devraient être seulement manipulés dans class Client
+    // Les trois objets sont private parce qu'ils devraient être seulement manipulés dans class Client
     private Socket socket;
     private ObjectOutputStream objectOutputStream;
     private ObjectInputStream objectInputStream;

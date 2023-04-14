@@ -20,8 +20,8 @@ public class Server {
     public final static String LOAD_COMMAND = "CHARGER";
     private final ServerSocket server;
     private static Socket client;
-    private static ObjectInputStream objectInputStream;
-    private static ObjectOutputStream objectOutputStream;
+    public static ObjectInputStream objectInputStream;
+    public static ObjectOutputStream objectOutputStream;
     private final ArrayList<EventHandler> handlers;
 
     /**

@@ -2,6 +2,8 @@ package server;
 
 // CAMBIAR VALORES DEL ANCHO DEL COSO
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.cell.PropertyValueFactory;
 import server.models.Course;
 import javafx.application.Application;
@@ -49,10 +51,26 @@ public class ClientFX extends Application {
 
         HBox options = new HBox();
         MenuItem automne = new MenuItem("Automne");
+        automne.setOnAction(actionEvent -> {
+            Controler.filtrerCourses("Automne");
+        });
         MenuItem hiver = new MenuItem("Hiver");
+        hiver.setOnAction(actionEvent -> {
+            Controler.filtrerCourses("Hiver");
+            }
+        );
         MenuItem ete = new MenuItem("Été");
+        ete.setOnAction(actionEvent -> {
+            Controler.filtrerCourses("Ete");
+        });
+
         MenuButton sessions = new MenuButton("sessions", null, automne, hiver,ete);
+        sessions.setPrefWidth(100);
+
         Button charger = new Button("charger");
+        charger.setOnAction(actionEvent -> {
+            Controler.charger();
+        });
 
         options.getChildren().addAll(sessions, charger);
         options.setAlignment(Pos.CENTER);
@@ -113,6 +131,9 @@ public class ClientFX extends Application {
         formulaire.getChildren().addAll(donnees, fields);
         Button envoyer = new Button("envoyer");
         envoyer.setPrefWidth(100);
+        envoyer.setOnAction(actionEvent -> {
+            Controler.insccription();
+        });
 
         inscription.getChildren().addAll(formTitle, formulaire, envoyer);
 

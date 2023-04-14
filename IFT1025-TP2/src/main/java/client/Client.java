@@ -5,20 +5,31 @@ import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
+/**
+ * Classe Client pour communiquer avec le serveur et gérer les inscriptions aux cours.
+ */
 public class Client {
     // Les trois objets sont private pcq'ils devraient être seulement manipulés dans class Client
     private Socket socket;
     private ObjectOutputStream objectOutputStream;
     private ObjectInputStream objectInputStream;
 
-    // Constructeur de la classe Client pour initialiser la connexion au serveur
+    /**
+     * Constructeur de la classe Client pour initialiser la connexion au serveur.
+     *
+     * @param host L'adresse du serveur
+     * @param port Le port du serveur
+     * @throws IOException En cas d'erreur lors de la connexion
+     */
     public Client(String host, int port) throws IOException {
         socket = new Socket(host, port);
         objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
         objectInputStream = new ObjectInputStream(socket.getInputStream());
     }
 
-    // Méthode pour récupérer la liste des cours disponibles pour une session donnée
+    /**
+     * Méthode pour récupérer la liste des cours disponibles pour une session donnée.
+     */
     public void showAvailableCourses() {
         try {
             Scanner scanner = new Scanner(System.in);
@@ -84,7 +95,9 @@ public class Client {
     }
 
 
-    // Méthode pour enregistrer un étudiant à un cours
+    /**
+     * Méthode pour enregistrer un étudiant à un cours.
+     */
     public void registerStudentToCourse() {
         Scanner scanner = new Scanner(System.in);
 
@@ -119,7 +132,11 @@ public class Client {
         }
     }
 
-    // Méthode "main" pour exécuter le client
+    /**
+     * Méthode principale pour exécuter le client.
+     *
+     * @param args Les arguments de la ligne de commande
+     */
     public static void main(String[] args) {
         try {
             Client client = new Client("localhost", 9090);
@@ -138,7 +155,11 @@ public class Client {
         }
     }
 
-    // Méthode pour fermer la connexion au serveur
+    /**
+     * Méthode pour fermer la connexion au serveur.
+     *
+     * @throws IOException En cas d'erreur lors de la fermeture de la connexion
+     */
     public void closeConnection() throws IOException {
         objectInputStream.close();
         objectOutputStream.close();

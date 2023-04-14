@@ -21,14 +21,22 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import server.models.ModeleCourse;
-
 import java.awt.event.MouseEvent;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * La classe ClientFX fournit une interface utilisateur pour afficher et inscrire les étudiants aux cours.
+ */
+
 public class ClientFX extends Application {
+    /**
+     * Méthode pour démarrer l'application JavaFX. Elle initialise l'interface utilisateur avec la liste des cours et un formulaire d'inscription.
+     * @param stage  la fenêtre de l'application
+     * @throws Exception si une erreur se produit
+     */
     @Override
     public void start(Stage stage) throws Exception {
         HBox root = new HBox();
@@ -70,36 +78,7 @@ public class ClientFX extends Application {
         Button charger = new Button("charger");
         charger.setOnAction(actionEvent -> {
             String sessionChoisie = (String) selectSession.getValue();
-                ObservableList<ModeleCourse> coursesO;
-                ArrayList<ModeleCourse> courses;
-                try {
-                    File coursInfo = new File("IFT1025-TP2/src/main/java/server/data/cours.txt");
-                    FileReader fr = new FileReader(coursInfo);
-                    BufferedReader reader = new BufferedReader(fr);
-
-                    courses = new ArrayList<ModeleCourse>();
-                    coursesO = FXCollections.observableArrayList();
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        String[] parts = line.split("\t");
-                        String courseCode = parts[0];
-                        String courseName = parts[1];
-                        String courseSession = parts[2];
-                        if (courseSession.equals(sessionChoisie)) {
-                            ModeleCourse courseDisponible = new ModeleCourse(courseCode, courseName, courseSession);
-                            courses.add(courseDisponible);
-                            coursesO.add(courseDisponible);
-                            System.out.println(courseDisponible.getCode() +" "+ courseDisponible.getName());
-                        }
-                    }
-                    reader.close();
-
-                } catch (FileNotFoundException e) {
-                    throw new RuntimeException(e);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                TableauCourses.getItems().addAll(coursesO);
+            TableauCourses.getItems().addAll(Controler.fillTable(sessionChoisie));
             });
 
         options.getChildren().addAll(selectSession, charger);

@@ -1,9 +1,10 @@
 package server;
 
-// CAMBIAR VALORES DEL ANCHO DEL COSO
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.SnapshotResult;
 import javafx.scene.control.cell.PropertyValueFactory;
 import server.models.Course;
 import javafx.application.Application;
@@ -19,6 +20,13 @@ import javafx.scene.text.Text;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import server.models.ModeleCourse;
+
+import java.awt.event.MouseEvent;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ClientFX extends Application {
     @Override
@@ -37,50 +45,70 @@ public class ClientFX extends Application {
         cours.setTextAlignment(TextAlignment.CENTER);
         cours.setFont(Font.font("sans serif", 20));
 
-        TableView<Course> TableauCourses = new TableView<Course>();
-        TableColumn<Course, String> code = new TableColumn<>("Code");
-        code.setCellValueFactory(new PropertyValueFactory<>("Code"));
-        code.setPrefWidth(150);
+        TableView<ModeleCourse> TableauCourses = new TableView<ModeleCourse>();
+        TableColumn<ModeleCourse, String> coursCode = new TableColumn<>("Code");
+        coursCode.setCellValueFactory(new PropertyValueFactory<>("Code"));
+        coursCode.setPrefWidth(150);
 
-        TableColumn<Course, String> coursSession = new TableColumn<>("Name");
-        coursSession.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        coursSession.setPrefWidth(250);
-        TableauCourses.getColumns().addAll(code, coursSession);
+        TableColumn<ModeleCourse, String> coursName = new TableColumn<>("Name");
+        coursName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        coursName.setPrefWidth(250);
+        TableauCourses.getColumns().addAll(coursCode, coursName);
 
         listeCours.setPadding(new Insets(0,50,0,50));
 
         HBox options = new HBox();
-        MenuItem automne = new MenuItem("Automne");
-        automne.setOnAction(actionEvent -> {
-            Controler.filtrerCourses("Automne");
-        });
-        MenuItem hiver = new MenuItem("Hiver");
-        hiver.setOnAction(actionEvent -> {
-            Controler.filtrerCourses("Hiver");
-            }
-        );
-        MenuItem ete = new MenuItem("Été");
-        ete.setOnAction(actionEvent -> {
-            Controler.filtrerCourses("Ete");
-        });
+        ChoiceBox selectSession = new ChoiceBox<>();
+        selectSession.getItems().add("Automne");
+        selectSession.getItems().add("Hiver");
+        selectSession.getItems().add("Ete");
 
-        MenuButton sessions = new MenuButton("sessions", null, automne, hiver,ete);
-        sessions.setPrefWidth(100);
+        TableView.TableViewSelectionModel selectionModel = TableauCourses.getSelectionModel();
+        selectionModel.setSelectionMode(SelectionMode.SINGLE);
+        ObservableList selectedItems = selectionModel.getSelectedItems();
 
         Button charger = new Button("charger");
         charger.setOnAction(actionEvent -> {
-            Controler.charger();
-        });
+            String sessionChoisie = (String) selectSession.getValue();
+                ObservableList<ModeleCourse> coursesO;
+                ArrayList<ModeleCourse> courses;
+                try {
+                    File coursInfo = new File("IFT1025-TP2/src/main/java/server/data/cours.txt");
+                    FileReader fr = new FileReader(coursInfo);
+                    BufferedReader reader = new BufferedReader(fr);
 
-        options.getChildren().addAll(sessions, charger);
+                    courses = new ArrayList<ModeleCourse>();
+                    coursesO = FXCollections.observableArrayList();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        String[] parts = line.split("\t");
+                        String courseCode = parts[0];
+                        String courseName = parts[1];
+                        String courseSession = parts[2];
+                        if (courseSession.equals(sessionChoisie)) {
+                            ModeleCourse courseDisponible = new ModeleCourse(courseCode, courseName, courseSession);
+                            courses.add(courseDisponible);
+                            coursesO.add(courseDisponible);
+                            System.out.println(courseDisponible.getCode() +" "+ courseDisponible.getName());
+                        }
+                    }
+                    reader.close();
+
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                TableauCourses.getItems().addAll(coursesO);
+            });
+
+        options.getChildren().addAll(selectSession, charger);
         options.setAlignment(Pos.CENTER);
         options.setSpacing(100);
         options.setPadding(new Insets(20));
 
-
         listeCours.getChildren().addAll(cours, TableauCourses,  options);
         listeCours.setAlignment(Pos.CENTER);
-
 
         Separator separator = new Separator();
         separator.setOrientation(Orientation.VERTICAL);
@@ -97,7 +125,6 @@ public class ClientFX extends Application {
         formTitle.setFont(Font.font("sans serif", 20));
 
         Text prenom = new Text("Prénom");
-
         TextField prenomField = new TextField();
         Text nom = new Text("Nom");
         TextField nomField = new TextField();
@@ -132,7 +159,38 @@ public class ClientFX extends Application {
         Button envoyer = new Button("envoyer");
         envoyer.setPrefWidth(100);
         envoyer.setOnAction(actionEvent -> {
-            Controler.insccription();
+            String nomInscription = nomField.getText();
+            String prenomInscription = prenomField.getText();
+            String emailInscription = emailField.getText();
+            String matriculeInscription = matriculeField.getText();
+            String incorrect = "";
+            if (!emailField.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$" )){
+                incorrect += "Le champ email est invalide \n";
+            } if (!matriculeField.getText().matches("^[0-9]{8}$")){
+                incorrect += "Le champ matricule est invalide \n ";
+            }
+            if(!incorrect.isEmpty()){
+                Alert incorrectDonnes = new Alert(Alert.AlertType.ERROR);
+                incorrectDonnes.setContentText("Le formulaire est invalide");
+                incorrectDonnes.setContentText(incorrect);
+                incorrectDonnes.showAndWait();
+            }
+            else {
+                String coursSelectionne = selectedItems.toString();
+                String donneesInscription = " " + matriculeInscription + " " + nomInscription + " " + prenomInscription +" "+ emailInscription;
+                try {
+
+                    FileWriter writer = new FileWriter("IFT1025-TP2/src/main/java/server/data/inscription.txt");
+
+                    writer.write(coursSelectionne);
+                    writer.write(donneesInscription);
+                    writer.close();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
         });
 
         inscription.getChildren().addAll(formTitle, formulaire, envoyer);

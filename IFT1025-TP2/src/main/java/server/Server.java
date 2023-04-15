@@ -158,7 +158,7 @@ public class Server {
 
             /**
              * Lire le fichier texte et creer la liste des cours
-              */
+             */
 
             courses = new ArrayList<Course>();
 
@@ -174,6 +174,52 @@ public class Server {
                     courses.add(courseDisponible);
 
                 }
+            }
+            /**
+             *  Fermer le fichier texte
+             */
+            reader.close();
+            /**
+             * Envoyer la liste des cours au client
+             */
+            objectOutputStream.writeObject(courses);
+            objectOutputStream.flush();
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return courses;
+
+    }
+
+    /**
+     * Récupère l'objet 'RegistrationForm' envoyé par le client en utilisant 'objectInputStream', l'enregistre dans un fichier texte
+     * et renvoie un message de confirmation au client.
+     * La méthode gére les exceptions si une erreur se produit lors de la lecture de l'objet, l'écriture dans un fichier ou dans le flux de sortie.
+     */
+    private void handleRegistration() {
+        try {
+            RegistrationForm form = (RegistrationForm) objectInputStream.readObject();
+
+            /**
+             * Ouvrir le fichier pour ajouter des données.
+             */
+            FileWriter writer = new FileWriter("registrations.txt", true);
+
+            /**
+             * Écrire le formulaire d'inscription dans un fichier.
+             */
+            writer.write(form.toString() + "\n");
+            writer.close();
+
+            /**
+             * Envoyer un message de réussite au client et gérer et afficher les exceptions en cas d'erreurs.
+             */
+            objectOutputStream.writeObject("Inscription réussie");
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
             }
             /**
              *  Fermer le fichier texte
@@ -222,6 +268,4 @@ public class Server {
                 e.printStackTrace();
             }
         }
-
-
 }

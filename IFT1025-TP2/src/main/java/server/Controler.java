@@ -36,7 +36,6 @@ public class Controler {
                 if (courseSession.equals(sessionChoisie)) {
                     ModeleCourse courseDisponible = new ModeleCourse(courseCode, courseName, courseSession);
                     courses.add(courseDisponible);
-
                 }
             }
             reader.close();

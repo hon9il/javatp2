@@ -77,8 +77,11 @@ public class ClientFX extends Application {
 
         Button charger = new Button("charger");
         charger.setOnAction(actionEvent -> {
+
             String sessionChoisie = (String) selectSession.getValue();
-            TableauCourses.getItems().addAll(Controler.fillTable(sessionChoisie));
+            Controler.fillTable(sessionChoisie).clear();
+            TableauCourses.setItems(Controler.fillTable(sessionChoisie));
+
             });
 
         options.getChildren().addAll(selectSession, charger);
@@ -145,8 +148,12 @@ public class ClientFX extends Application {
             String incorrect = "";
             if (!emailField.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$" )){
                 incorrect += "Le champ email est invalide \n";
-            } if (!matriculeField.getText().matches("^[0-9]{8}$")){
+            }
+            if (!matriculeField.getText().matches("^[0-9]{8}$")){
                 incorrect += "Le champ matricule est invalide \n ";
+            }
+            if(selectedItems.isEmpty()){
+                incorrect += "Vous devez selectioner un cours! \n";
             }
             if(!incorrect.isEmpty()){
                 Alert incorrectDonnes = new Alert(Alert.AlertType.ERROR);
@@ -158,6 +165,9 @@ public class ClientFX extends Application {
                 String coursSelectionne = selectedItems.toString();
                 String donneesInscription = " " + matriculeInscription + " " + nomInscription + " " + prenomInscription +" "+ emailInscription;
                 try {
+                    Alert FinInscription = new Alert(Alert.AlertType.CONFIRMATION);
+                    FinInscription.setContentText("Felicitations! "+ nomInscription +" " + prenomInscription +" est inscrit(e) avec succes pour le cours!" + coursSelectionne);
+                    FinInscription.showAndWait();
 
                     FileWriter writer = new FileWriter("IFT1025-TP2/src/main/java/server/data/inscription.txt");
 
@@ -168,6 +178,7 @@ public class ClientFX extends Application {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
             }
 
         });

@@ -17,7 +17,12 @@ import javafx.event.ActionEvent;
 import server.models.ModeleCourse;
 
 public class Controler {
-
+    /**
+     * Récupère les données des cours à partir d'un fichier texte et retourne une liste observable de cours correspondant à la session choisie.
+     * @param sessionChoisie la session choisie par l'utilisateur
+     * @return une liste observable de cours correspondant à la session choisie
+     * @throws RuntimeException si le fichier cours.txt est introuvable ou si une erreur d'entrée/sortie se produit lors de la lecture du fichier
+     */
     public static ObservableList fillTable(String sessionChoisie){
         ObservableList<ModeleCourse> courses;
 

@@ -76,6 +76,12 @@ public class ClientFX extends Application {
         ObservableList selectedItems = selectionModel.getSelectedItems();
 
         Button charger = new Button("charger");
+        /**
+         * Réagit au clic de l'utilisateur sur le bouton "charger".
+         * Récupère la session sélectionnée par l'utilisateur et remplit le tableau des cours avec les données de la session choisie.
+         * @param actionEvent un événement de clic sur le bouton "charger"
+         * */
+         
         charger.setOnAction(actionEvent -> {
 
             String sessionChoisie = (String) selectSession.getValue();
@@ -140,6 +146,13 @@ public class ClientFX extends Application {
         formulaire.getChildren().addAll(donnees, fields);
         Button envoyer = new Button("envoyer");
         envoyer.setPrefWidth(100);
+        /**
+         * Réagit au clic de l'utilisateur sur le bouton "envoyer".
+         * Récupère les informations entrées par l'utilisateur et les valide.
+         * Si les données sont valides, inscrit l'utilisateur au cours sélectionné et enregistre les données dans un fichier.
+         * Si les données ne sont pas valides, affiche un message d'erreur.
+         * @param actionEvent un événement de clic sur le bouton "envoyer"
+         */
         envoyer.setOnAction(actionEvent -> {
             String nomInscription = nomField.getText();
             String prenomInscription = prenomField.getText();
@@ -169,10 +182,11 @@ public class ClientFX extends Application {
                     FinInscription.setContentText("Felicitations! "+ nomInscription +" " + prenomInscription +" est inscrit(e) avec succes pour le cours!" + coursSelectionne);
                     FinInscription.showAndWait();
 
-                    FileWriter writer = new FileWriter("IFT1025-TP2/src/main/java/server/data/inscription.txt");
+                    FileWriter writer = new FileWriter("IFT1025-TP2/src/main/java/server/data/inscription.txt", true);
 
                     writer.write(coursSelectionne);
                     writer.write(donneesInscription);
+                    writer.write("\n");
                     writer.close();
 
                 } catch (IOException e) {

@@ -81,7 +81,7 @@ public class ClientFX extends Application {
          * Récupère la session sélectionnée par l'utilisateur et remplit le tableau des cours avec les données de la session choisie.
          * @param actionEvent un événement de clic sur le bouton "charger"
          * */
-         
+
         charger.setOnAction(actionEvent -> {
 
             String sessionChoisie = (String) selectSession.getValue();

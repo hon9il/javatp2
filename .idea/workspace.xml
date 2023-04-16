@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="client_fx" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="06ad9349-61ed-493c-8a5c-1ce57f7e5e02" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/javatp2_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/server_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IFT1025-TP2/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/Server.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/javatp2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/server_jar/javatp2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Server_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/client_fx.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Server_java_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/client_simple_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/Server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/Server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/allclasses-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/allpackages-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/constant-values.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/help-doc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-10.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-11.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-11.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-12.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-12.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-6.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-7.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-8.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-8.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-9.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index-files/index-9.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/legal/jquery.md" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/legal/jquery.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/legal/jqueryUI.md" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/legal/jqueryUI.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/member-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/member-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/overview-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/overview-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/script-dir/jquery-3.6.0.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/script-dir/jquery-3.6.0.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/script-dir/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/script-dir/jquery-ui.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/script-dir/jquery-ui.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/script-dir/jquery-ui.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/serialized-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/serialized-form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/AppTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/AppTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/Client.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/Client.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/EventHandler.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/EventHandler.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/Server.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/Server.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/ServerLauncher.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/ServerLauncher.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/models/Course.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/models/Course.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/models/RegistrationForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/models/RegistrationForm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/models/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/models/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/models/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/models/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/server/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/javadoc/type-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/javadoc/type-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/src/main/java/server/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/src/main/java/server/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/src/main/java/server/ClientFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/src/main/java/server/ClientFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/src/main/java/server/Controler.java" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/src/main/java/server/Controler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/target/classes/server/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/target/classes/server/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/target/classes/server/ClientFX.class" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/target/classes/server/ClientFX.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IFT1025-TP2/target/classes/server/Controler.class" beforeDir="false" afterPath="$PROJECT_DIR$/IFT1025-TP2/target/classes/server/Controler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Server_java_jar/Server.java.jar" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="vmOptions" value="--module--path &quot;C:\Users\laura\Documents\INFORMATICA\javafx-sdk-20\lib&quot; --add-modules=javafx.controls, javafx.fxml" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2O7jDaypyKyvyXE3WyT90CFphJh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last.edited.regexp": "",
+    "last_opened_file_path": "C:/Users/laura/Documents/INFORMATICA/copia de seguridad/tp/javatp2",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
+  }
+}]]></component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn package" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.ServerLauncher (1)">
+    <configuration name="Client (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.Client" />
+      <module name="Server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.Client" />
+      <module name="javatp2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClientFX" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.ClientFX" />
+      <module name="Server" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\laura\Documents\INFORMATICA\javafx-sdk-20\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerLauncher (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.ServerLauncher" />
+      <module name="Server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerLauncher" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.ServerLauncher" />
+      <module name="javatp2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="PROGRAM_PARAMETERS" value="1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/Server.jar" />
+      <method v="2" />
+    </configuration>
+    <configuration name="javatp2.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/javatp2.jar" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Client" />
+      <item itemvalue="Application.ServerLauncher" />
+      <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Application.Client (1)" />
+      <item itemvalue="Application.ServerLauncher (1)" />
+      <item itemvalue="Application.ClientFX" />
+      <item itemvalue="JAR Application.Server.jar" />
+      <item itemvalue="JAR Application.javatp2.jar" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ServerLauncher (1)" />
+        <item itemvalue="Application.ClientFX" />
+        <item itemvalue="JAR Application.Server.jar" />
+        <item itemvalue="Application.Client (1)" />
+        <item itemvalue="JAR Application.javatp2.jar" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="06ad9349-61ed-493c-8a5c-1ce57f7e5e02" name="Changes" comment="" />
+      <created>1680918395331</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680918395331</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.net.ConnectException" package="java.net" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.io.IOException" package="java.io" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

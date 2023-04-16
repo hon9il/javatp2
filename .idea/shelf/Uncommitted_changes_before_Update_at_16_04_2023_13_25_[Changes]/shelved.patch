@@ -1,0 +1,107 @@
+Index: .idea/artifacts/Server_jar.xml
+===================================================================
+diff --git a/.idea/artifacts/Server_jar.xml b/.idea/artifacts/client_fx.xml
+rename from .idea/artifacts/Server_jar.xml
+rename to .idea/artifacts/client_fx.xml
+--- a/.idea/artifacts/Server_jar.xml	
++++ b/.idea/artifacts/client_fx.xml	
+@@ -1,16 +1,19 @@
+ <component name="ArtifactManager">
+-  <artifact type="jar" name="Server:jar">
+-    <output-path>$PROJECT_DIR$/out/artifacts/Server_jar</output-path>
++  <artifact type="jar" name="client_fx">
++    <output-path>$PROJECT_DIR$/out/artifacts</output-path>
+     <root id="archive" name="Server.jar">
++      <element id="directory" name="META-INF">
++        <element id="file-copy" path="$PROJECT_DIR$/IFT1025-TP2/META-INF/MANIFEST.MF" />
++      </element>
+       <element id="module-output" name="Server" />
++      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/13/javafx-graphics-13-win.jar" path-in-jar="/" />
++      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/13/javafx-fxml-13-win.jar" path-in-jar="/" />
+       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/13/javafx-controls-13.jar" path-in-jar="/" />
+       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/13/javafx-base-13-win.jar" path-in-jar="/" />
+       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar" path-in-jar="/" />
+-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/13/javafx-controls-13-win.jar" path-in-jar="/" />
+-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/13/javafx-graphics-13-win.jar" path-in-jar="/" />
+-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar" path-in-jar="/" />
+-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/13/javafx-fxml-13-win.jar" path-in-jar="/" />
+       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/13/javafx-base-13.jar" path-in-jar="/" />
++      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar" path-in-jar="/" />
++      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/13/javafx-controls-13-win.jar" path-in-jar="/" />
+     </root>
+   </artifact>
+ </component>
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"CompilerConfiguration\">\r\n    <annotationProcessing>\r\n      <profile name=\"Maven default annotation processors profile\" enabled=\"true\">\r\n        <sourceOutputDir name=\"target/generated-sources/annotations\" />\r\n        <sourceTestOutputDir name=\"target/generated-test-sources/test-annotations\" />\r\n        <outputRelativeToContentRoot value=\"true\" />\r\n      </profile>\r\n    </annotationProcessing>\r\n    <bytecodeTargetLevel>\r\n      <module name=\"Server\" target=\"11\" />\r\n    </bytecodeTargetLevel>\r\n  </component>\r\n</project>
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+--- a/.idea/compiler.xml	
++++ b/.idea/compiler.xml	
+@@ -6,9 +6,10 @@
+         <sourceOutputDir name="target/generated-sources/annotations" />
+         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+         <outputRelativeToContentRoot value="true" />
++        <module name="Server" />
+       </profile>
+     </annotationProcessing>
+-    <bytecodeTargetLevel>
++    <bytecodeTargetLevel target="1.1">
+       <module name="Server" target="11" />
+     </bytecodeTargetLevel>
+   </component>
+Index: IFT1025-TP2/Server.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule=\"true\" type=\"JAVA_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\" LANGUAGE_LEVEL=\"JDK_15\">\r\n    <output url=\"file://$MODULE_DIR$/target/classes\" />\r\n    <output-test url=\"file://$MODULE_DIR$/target/test-classes\" />\r\n    <content url=\"file://$MODULE_DIR$\">\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src/main/java\" isTestSource=\"false\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src/test/java\" isTestSource=\"true\" />\r\n      <excludeFolder url=\"file://$MODULE_DIR$/target\" />\r\n    </content>\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: junit:junit:4.11\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.hamcrest:hamcrest-core:1.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.openjfx:javafx-fxml:13\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.openjfx:javafx-fxml:win:13\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.openjfx:javafx-controls:13\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.openjfx:javafx-controls:win:13\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.openjfx:javafx-graphics:13\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.openjfx:javafx-graphics:win:13\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.openjfx:javafx-base:13\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.openjfx:javafx-base:win:13\" level=\"project\" />\r\n  </component>\r\n</module>
+===================================================================
+diff --git a/IFT1025-TP2/Server.iml b/IFT1025-TP2/Server.iml
+--- a/IFT1025-TP2/Server.iml	
++++ b/IFT1025-TP2/Server.iml	
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_15">
++  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
+     <output url="file://$MODULE_DIR$/target/classes" />
+     <output-test url="file://$MODULE_DIR$/target/test-classes" />
+     <content url="file://$MODULE_DIR$">
+Index: .idea/artifacts/Server_java_jar.xml
+===================================================================
+diff --git a/.idea/artifacts/Server_java_jar.xml b/.idea/artifacts/client_simple_jar.xml
+rename from .idea/artifacts/Server_java_jar.xml
+rename to .idea/artifacts/client_simple_jar.xml
+--- a/.idea/artifacts/Server_java_jar.xml	
++++ b/.idea/artifacts/client_simple_jar.xml	
+@@ -1,16 +1,21 @@
+ <component name="ArtifactManager">
+-  <artifact type="jar" name="Server.java:jar">
+-    <output-path>$PROJECT_DIR$/out/artifacts/Server_java_jar</output-path>
+-    <root id="archive" name="Server.java.jar">
++  <artifact type="jar" name="client_simple.jar">
++    <output-path>$PROJECT_DIR$/out/artifacts</output-path>
++    <root id="archive" name="javatp2.jar">
++      <element id="directory" name="META-INF">
++        <element id="file-copy" path="$PROJECT_DIR$/IFT1025-TP2/META-INF/MANIFEST.MF" />
++      </element>
+       <element id="module-output" name="Server" />
++      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/13/javafx-graphics-13-win.jar" path-in-jar="/" />
+       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/13/javafx-fxml-13-win.jar" path-in-jar="/" />
+-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar" path-in-jar="/" />
++      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/13/javafx-controls-13.jar" path-in-jar="/" />
+       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/13/javafx-base-13-win.jar" path-in-jar="/" />
++      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar" path-in-jar="/" />
++      <element id="library" level="project" name="openjfx-20_windows-x64_bin-sdk (1)" />
++      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/13/javafx-base-13.jar" path-in-jar="/" />
++      <element id="dir-copy" path="$PROJECT_DIR$" />
+       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar" path-in-jar="/" />
+       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/13/javafx-controls-13-win.jar" path-in-jar="/" />
+-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/13/javafx-graphics-13-win.jar" path-in-jar="/" />
+-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/13/javafx-controls-13.jar" path-in-jar="/" />
+-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/13/javafx-base-13.jar" path-in-jar="/" />
+     </root>
+   </artifact>
+ </component>
+\ No newline at end of file
